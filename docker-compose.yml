@@ -12,6 +12,7 @@ services:
         - "3000:3000"
       environment:
         - AUTHENTICATION_SERVICE_URL=http://authentication-service:3001
+        - AUTHORIZATION_SERVICE_URL=http://authorization-service:3002
         - MONGO_URL=mongodb://messengerbdd:27017/demo
       depends_on:
         - messengerbdd
@@ -40,6 +41,21 @@ services:
         - "3001:3000"
       environment:
         - MONGO_URL=mongodb://messengerbdd:27017/demo
+        - JWT_SECRET=${JWT_SECRET}
+      depends_on:
+        - messengerbdd
+
+        
+    authorization-service:
+      container_name: authorization-service
+      build: 
+        context: .
+        dockerfile : ./authorization-service/DockerFile
+      volumes : 
+        - ./authorization-service:/app
+      ports:
+        - "3002:3000"
+      environment:
         - JWT_SECRET=${JWT_SECRET}
       depends_on:
         - messengerbdd

@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const server = express();
 
-mongoose.connect("mongodb://messengerbdd:27017/", {useNewUrlParser: true})
+mongoose.connect("mongodb://messengerbdd:27017/demo")
 
 server.use(express.json());
 

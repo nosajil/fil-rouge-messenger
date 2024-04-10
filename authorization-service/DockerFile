@@ -1,0 +1,13 @@
+# On utilise node:20-alpine comme image de base
+FROM node:20-alpine
+
+# Creation du dossier qui va contenir le code a l'interieur de l'image
+RUN mkdir -p /app
+
+WORKDIR /app
+
+# On expose le port sur lequel l'app va tourner
+EXPOSE 3002
+
+# Run l'application
+CMD npm run start:dev

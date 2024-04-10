@@ -1,8 +1,9 @@
 import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
-import userRouter from './routes/userRouter.js'
 import axios from 'axios'
+import checkLogin from './middlewares/checkLogin.js'
+import userRouter from './routes/userRouter.js'
 
 const app = express()
 
@@ -23,8 +24,9 @@ app.post("/signup", async (req, res) => {
     }
 })
 
-app.post("/login", async (req, res) => {
+app.post("/login", checkLogin, async (req, res) => {
     try {
+        res.cookie('token', req.params.token)
         const login = await axios.post(`${authenticationServiceURL}/login`, req.body)
         return res.json(login.data);
     } catch (error) {
