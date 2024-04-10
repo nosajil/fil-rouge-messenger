@@ -1,0 +1,270 @@
+html,
+body {
+  font-family: MS Sans Serif, Arial, sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.LoginPage,
+.RegisterPage {
+  display: grid;
+  place-items: center;
+  height: 90vh;
+}
+
+.ShopPage {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "titre titre titre"
+    "d1 d2 d3"
+    "d1 d2 d3"
+    "d1 d2 d3";
+}
+
+.d1 {
+  grid-area: d1;
+}
+
+.d1 .ShopPage-card-img {
+  background: url('../../img/d1.png') center/contain no-repeat;
+}
+
+.d2 {
+  grid-area: d2;
+}
+
+.d2 .ShopPage-card-img {
+  background: url('../../img/d2.png') center/contain no-repeat;
+}
+
+.d3 {
+  grid-area: d3;
+}
+
+.d3 .ShopPage-card-img {
+  background: url('../../img/d3.png') center/contain no-repeat;
+}
+
+.titre {
+  grid-area: titre;
+  text-align: center;
+  font-size: 4em;
+  padding: 40px 0 80px;
+}
+
+.ShopPage-card {
+  margin: auto;
+  background: rgb(0, 0, 0);
+  width: 380px;
+  height: 600px;
+  border-radius: 50px;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1.2fr 1.2fr 1.2fr 0.35fr 0.3fr;
+  grid-template-areas:
+    "ShopPage-card-header ShopPage-card-header ShopPage-card-header ShopPage-card-header"
+    ". ShopPage-card-img ShopPage-card-img ."
+    ". ShopPage-card-img ShopPage-card-img ."
+    "ShopPage-card-description ShopPage-card-description ShopPage-card-description ShopPage-card-description"
+    ". ShopPage-card-button ShopPage-card-button ."
+    ". . . .";
+}
+
+.ShopPage-card-header {
+  color: white;
+  text-align: center;
+  font-size: 1.4em;
+  padding: 10px 0 10px 0;
+  grid-area: ShopPage-card-header;
+}
+
+.ShopPage-card-img {
+  grid-area: ShopPage-card-img;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.ShopPage-card-description {
+  color: white;
+  text-align: center;
+  font-size: 1.2em;
+  padding: 0 30px;
+  grid-area: ShopPage-card-description;
+}
+
+
+.ShopPage-card-button {
+  color: white;
+  font-size: 1.2em;
+  border-radius: 10px;
+  grid-area: ShopPage-card-button;
+  background: green;
+}
+
+.UserPage {
+  display: grid;
+  grid-template-columns: 0.2fr 1fr 1fr 1fr 1fr 0.2fr;
+  grid-template-rows: 0.2fr 0.5fr 0.1fr 1.1fr 1.1fr 1fr 0.2fr;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: row;
+  grid-template-areas:
+    " . . . . . ."
+    ". UserPage-profil-card UserPage-color-card UserPage-pseudo-card UserPage-salons-card ."
+    " . . . . . ."
+    ". . UserPage-block-card UserPage-block-card UserPage-block-card ."
+    ". . UserPage-block-card UserPage-block-card UserPage-block-card ."
+    ". . UserPage-block-card UserPage-block-card UserPage-block-card ."
+    " . . . . . .";
+  width: 100%;
+  height: 92vh;
+}
+
+.UserPage>* {
+  height: 100%;
+  width: 100%;
+}
+
+.UserPage-profil-card,
+.UserPage-color-card {
+  grid-area: UserPage-profil-card;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 1.3fr 1fr 1fr 1fr 1fr 1.3fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    ". . . . . ."
+    ". UserPage-profil-card-img UserPage-profil-card-img UserPage-profil-card-img UserPage-profil-card-img ."
+    ". UserPage-profil-card-img UserPage-profil-card-img UserPage-profil-card-img UserPage-profil-card-img ."
+    ". UserPage-profil-card-img UserPage-profil-card-img UserPage-profil-card-img UserPage-profil-card-img ."
+    ". UserPage-profil-card-img UserPage-profil-card-img UserPage-profil-card-img UserPage-profil-card-img ."
+    ". UserPage-profil-card-img UserPage-profil-card-img UserPage-profil-card-img UserPage-profil-card-img ."
+    ". UserPage-profil-card-img UserPage-profil-card-img UserPage-profil-card-img UserPage-profil-card-img ."
+    ". . . . . ."
+    ". UserPage-profil-card-button UserPage-profil-card-button UserPage-profil-card-button UserPage-profil-card-button ."
+    ". . . . . .";
+}
+
+.UserPage-profil-card-img {
+  grid-area: UserPage-profil-card-img;
+  background: gray;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.UserPage-profil-card-button {
+  grid-area: UserPage-profil-card-button;
+  background: blue;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.UserPage-color-card {
+  grid-area: UserPage-color-card !important;
+}
+
+.UserPage-color-card-img {
+  grid-area: UserPage-profil-card-img;
+  background: gray;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.UserPage-color-card-button {
+  grid-area: UserPage-profil-card-button;
+  background: blue;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.UserPage-pseudo-card {
+  grid-area: UserPage-pseudo-card;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.UserPage-pseudo-card-titre {
+  text-align: center;
+  font-size: 3em;
+  font-weight: 600;
+}
+
+.UserPage-pseudo-card-button1 {
+  background: blue;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin: 30px 0 15px 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+.UserPage-pseudo-card-button2 {
+  background: blue;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+
+.UserPage-salons-card {
+  grid-area: UserPage-salons-card;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.UserPage-salons-card-titre {
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.UserPage-salons-card-button {
+  background: blue;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin: 30px 0 15px 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+.UserPage-block-card {
+  grid-area: UserPage-block-card;
+  background: purple;
+}
+
+.UserPage-block-card-titre {
+  font-size: 2.4em;
+  font-weight: 600;
+  text-align: center;
+}
+
+.UserPage-block-card-ul {}
+
+.UserPage-block-card-li {}
+
+.UserPage-block-card-button {}

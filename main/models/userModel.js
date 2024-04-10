@@ -1,6 +1,6 @@
 import mongoose, {Schema} from 'mongoose'
 
-const MONGO_URL = process.env.MONGO_URL || 'mongodb://userdb:27017/demo'
+const MONGO_URL = process.env.MONGO_URL
 
 mongoose.connect(MONGO_URL)
 
@@ -19,8 +19,11 @@ const userSchema = Schema({
         type : String,
         required : true,
         minlength : 12
+    },
+    status: {
+        type: Boolean,
+        default: true
     }
-
 })
 
 const User = mongoose.model('user', userSchema)

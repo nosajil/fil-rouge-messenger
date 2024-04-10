@@ -11,14 +11,15 @@ services:
       ports:
         - "3000:3000"
       environment:
-        - MONGO_URL=mongodb://userdb:27017/demo
+        - AUTHENTICATION_SERVICE_URL=http://authentication-service:3001
+        - MONGO_URL=mongodb://messengerbdd:27017/demo
       depends_on:
-        - userdb
+        - messengerbdd
 
     
-    userdb:
+    messengerbdd:
       image: mongo:latest
-      container_name: userdb
+      container_name: messengerbdd
       ports:
         - "27017:27017"
       restart: always
@@ -27,3 +28,18 @@ services:
       volumes:
         - ./init-users.js:/docker-entrypoint-initdb.d/init-users.js:ro
         - /data/db
+
+    authentication-service:
+      container_name: authentication-service
+      build:
+        context: .
+        dockerfile: ./authentication-service/DockerFile
+      volumes:
+        - ./authentication-service:/app
+      ports:
+        - "3001:3000"
+      environment:
+        - MONGO_URL=mongodb://messengerbdd:27017/demo
+        - JWT_SECRET=${JWT_SECRET}
+      depends_on:
+        - messengerbdd
