@@ -2,7 +2,7 @@ import '../sass/tchat.scss';
 import io from 'socket.io-client';
 import { useEffect, useState } from 'react';
 
-const socket = io.connect('http://localhost:3003');
+// const socket = io.connect('http://localhost:3003');
 
 export const TchatPage = () => {
     const [room, setRoom] = useState('');
