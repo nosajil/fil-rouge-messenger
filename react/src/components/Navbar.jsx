@@ -32,7 +32,9 @@ export const Navbar = () => {
                             </Typography>
                         </Box>
                         <Button onClick={() => navigate('/')} variant="contained" color="primary" sx={{ marginRight: 2 }}>Se connecter</Button>
-                        <Button onClick={() => navigate('/register')} variant="contained" color="secondary">S'inscrire</Button>
+                        <Button onClick={() => navigate('/register')} variant="contained" color="secondary" sx={{ marginRight: 2 }}>S'inscrire</Button>
+                        <Button onClick={() => navigate('/')} variant="contained" color="error">Se déconnecter</Button>
+
                     </Toolbar>
                 </AppBar>
             </Box>
