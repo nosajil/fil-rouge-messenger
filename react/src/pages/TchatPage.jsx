@@ -2,7 +2,7 @@ import '../sass/tchat.scss';
 import io from 'socket.io-client';
 import { useEffect, useState } from 'react';
 
-const socket = io.connect('http://localhost:3003');
+// const socket = io.connect('http://localhost:3003');
 
 export const TchatPage = () => {
 
@@ -30,12 +30,12 @@ export const TchatPage = () => {
         addMessageElement($el, options);
     }
 
-    useEffect(() => {
-        socket.on("receive_message", (data) => {
-            // setMessageReceived(data.message);
-            setMessages((prevMessages) => [...prevMessages, data.message]);
-        });
-    }, [socket]);
+    // useEffect(() => {
+    //     socket.on("receive_message", (data) => {
+    //         // setMessageReceived(data.message);
+    //         setMessages((prevMessages) => [...prevMessages, data.message]);
+    //     });
+    // }, [socket]);
 
     return (
         <div className="tchat_container">

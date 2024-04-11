@@ -1,7 +1,7 @@
 export const ShopPage = () => {
     return (
         <div className="ShopPage">
-            <div className="titre">Achat de fonctionnalités prémium</div>
+            <div className="titre">Achat de fonctionnalités premium</div>
 
             <div className="ShopPage-card d1">
                 <p className="ShopPage-card-header">COLORATION DE PSEUDO</p>

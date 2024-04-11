@@ -6,8 +6,44 @@ import FormLabel from '@mui/joy/FormLabel';
 import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
 import Link from '@mui/joy/Link';
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios';
 
 export const LoginPage = () => {
+    const navigate = useNavigate()
+
+    const logUser = async (userData) => {
+        try {
+            const response = await axios.post('http://localhost:3000/login', userData);
+            return response.data;
+        } catch (error) {
+            console.error('Erreur lors de la connexion:', error);
+            throw error;
+        }
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget);
+        const userData = {
+            email: formData.get('email'),
+            password: formData.get('password'),
+
+
+        };
+
+
+        try {
+            const result = await logUser(userData);
+            console.log('Connexion réussie:', result);
+            navigate('/tchat')
+
+        } catch (error) {
+            console.log('Big Mistake', error.message);
+        }
+    };
+
+
     return (
         <main>
             <div className="LoginPage">
@@ -43,19 +79,19 @@ export const LoginPage = () => {
                         </Typography>
                         <Typography level="body-sm">Connectez-vous pour continuez.</Typography>
                     </div>
+                    <form onSubmit={handleSubmit}>
+                        <FormControl>
+                            <FormLabel>Email</FormLabel>
+                            <Input name="email" type="email" placeholder="johndoe@email.com" />
+                        </FormControl>
 
-                    <FormControl>
-                        <FormLabel>Email</FormLabel>
-                        <Input name="email" type="email" placeholder="johndoe@email.com" />
-                    </FormControl>
+                        <FormControl>
+                            <FormLabel>Mot de passe</FormLabel>
+                            <Input name="password" type="password" placeholder="*******" />
+                        </FormControl>
 
-                    <FormControl>
-                        <FormLabel>Mot de passe</FormLabel>
-                        <Input name="password" type="password" placeholder="*******" />
-                    </FormControl>
-
-                    <Button sx={{ mt: 1, backgroundColor: '#1565C0' }}>Se connecter</Button>
-
+                        <Button type='submit' sx={{ mt: 1, backgroundColor: '#1565C0' }}>Se connecter</Button>
+                    </form>
                     <Typography
                         endDecorator={<Link href="/register">S'inscrire</Link>}
                         fontSize="sm"

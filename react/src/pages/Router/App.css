@@ -4,6 +4,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color: rgb(208, 207, 207);
 }
 
 a {
@@ -63,7 +64,7 @@ a {
 
 .ShopPage-card {
   margin: auto;
-  background: rgb(0, 0, 0);
+  background: rgb(45, 45, 45);
   width: 380px;
   height: 600px;
   border-radius: 50px;
@@ -78,6 +79,7 @@ a {
     "ShopPage-card-description ShopPage-card-description ShopPage-card-description ShopPage-card-description"
     ". ShopPage-card-button ShopPage-card-button ."
     ". . . .";
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .ShopPage-card-header {
