@@ -1,13 +1,31 @@
 import '../sass/tchat.scss';
 import io from 'socket.io-client';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
-// const socket = io.connect('http://localhost:3003');
+const token = Cookies.get('userToken');
+
+const socket = io.connect('http://localhost:3000');
 
 export const TchatPage = () => {
     const [room, setRoom] = useState('');
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            axios.get('http://localhost:3000/api/users', { withCredentials: true })
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.error('Erreur lors de la récupération des données utilisateur', error);
+            });
+        };
+
+        fetchUserData();
+    }, []);
 
     const joinRoom = () => {
         if (room !== "") {

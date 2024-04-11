@@ -1,16 +1,16 @@
-const express = require('express');
-const app = express();
-const http = require('http');
-const { Server } = require('socket.io');
-const cors = require('cors');
+import express from 'express';
+import http from 'http';
+import { Server } from 'socket.io';
+import cors from 'cors';
 
-app.use(cors());
+const app = express();
 
 const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: 'http://localhost:5173',
+        origin: ['http://localhost:5173', 'http://localhost:5174'], // Ajoutez l'origine supplémentaire
+        credentials: true,
         methods: ['GET', 'POST']
     }
 });
@@ -45,3 +45,5 @@ io.on("connection", (socket) => {
 server.listen(3003, () => {
     console.log("Socket.io server listening on port 3003 !");
 });
+
+export default io;
